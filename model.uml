@@ -1,0 +1,58 @@
+@startuml
+class EntityBase {
+	int id
+	Timestamp created_at
+	Timestamp updated_at
+}
+
+class Pair {
+	User user
+	Message message
+}
+
+class User {
+	String account
+	String name
+	boolean admin
+}
+
+class Message {
+	String text
+	int userId
+	boolean publicMessage
+	String imageFileName
+}
+
+
+EntityBase <|-down- User
+EntityBase <|-down- Message
+Pair o-up- User
+Pair o-up- Message
+
+abstract class DAO {
+	Connection db
+	String tableName
+	T createEntity()
+	int count()
+	T findById()
+	List<T> findAll()
+	void delete()
+}
+
+class UserDAO {
+	findByAccount()
+	User addUser()
+	User updateUser()
+	User login()
+}
+
+class MessageDAO {
+	List<Pair> findVisible()
+	Message addMessage()
+	Message updateMessage()
+}
+
+DAO <|-down- UserDAO
+DAO <|-down- MessageDAO
+
+@enduml

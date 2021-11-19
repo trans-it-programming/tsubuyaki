@@ -1,0 +1,20 @@
+@startuml
+abstract class DbServlet {
+	void action()
+}
+
+abstract class JspServlet {
+	String view()
+}
+
+
+
+DbServlet <|-down- JspServlet
+JspServlet<|-down- TopServlet
+JspServlet<|-down- LoginServlet
+JspServlet<|-down- PostMessageServlet
+JspServlet<|-down- MessageServlet
+JspServlet<|-down- LogoutServlet
+JspServlet<|-down- UserServlet
+DbServlet <|- ImageServlet
+@enduml

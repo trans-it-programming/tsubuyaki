@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+actor ユーザー as user
+actor 管理者 as admin
+package つぶやきシステム {
+	usecase "つぶききを投稿する" as post
+	usecase "つぶやきを閲覧する" as view
+	usecase "ユーザーを管理する" as users
+}
+user --> post
+user --> view
+admin --> post
+admin --> view
+admin --> users
+@enduml
+
